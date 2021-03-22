@@ -115,7 +115,7 @@ class CookieGame extends React.Component {
                   <p>
                     <b>{clicker.name}</b>
                   </p>
-                  <span>Autoclicks every 10 seconds</span>
+                  <span>{clicker.desc}</span>
                   <p className={"clicker-cost"}>Cost:10</p>
                   <button
                     className="btn btn-primary"
