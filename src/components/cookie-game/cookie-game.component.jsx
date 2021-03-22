@@ -18,6 +18,16 @@ class CookieGame extends React.Component {
           numberOf: 0, //instances
           lastEntry: new Date(), //last execution
         },
+        {
+          id: 2,
+          name: "Grandma",
+          frequency: 1, //seconds
+          cost: 20, //cookies
+          desc: "Grandma bakes a cookie every second",
+          numberOf: 0, //instances
+          lastEntry: new Date(), //last execution
+        },
+        
       ],
     };
 
@@ -112,7 +122,7 @@ class CookieGame extends React.Component {
                     disabled={this.isClickerDisabled(clicker.cost)}
                     onClick={() => this.onAddClicker(i)}
                   >
-                    Buy Clicker for 10 Cookies ({clicker.numberOf})
+                    Buy for {clicker.cost} Cookies ({clicker.numberOf})
                   </button>
                 </div>
               ))}
