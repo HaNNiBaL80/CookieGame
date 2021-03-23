@@ -46,12 +46,14 @@ class CookieGame extends React.Component {
     this.clickCookie = this.clickCookie.bind(this);
   }
 
-  onAddClicker = (i) => {
+  onBuyClicker = (i) => {
     const clickers = this.state.clickers;
     if (clickers[i].numberOf === 0) {
       clickers[i].lastEntry = new Date();
     }
     clickers[i].numberOf = clickers[i].numberOf + 1;
+    clickers[i].cost = clickers[i].cost * 1.15;
+
     this.setState({
       cookies: this.state.cookies - clickers[i].cost,
       clickers: clickers,
@@ -121,7 +123,7 @@ class CookieGame extends React.Component {
         <div className={"row"}>{thatState.time}</div>
         <div className={"row"}>
           <div className={"col-xs-6 well"}>
-            <div className={"col-xs-12"}>Cookies: {[thatState.cookies]}</div>
+            <div className={"col-xs-12"}>Cookies: {[thatState.cookies.toFixed(2)]}</div>
             <div className={"col-xs-12 cookie"} onClick={this.clickCookie}>
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/e/e5/Crystal_Project_cookie.png"
@@ -164,7 +166,7 @@ class CookieGame extends React.Component {
                   <button
                     className="btn btn-primary"
                     disabled={this.isClickerDisabled(clicker.cost)}
-                    onClick={() => this.onAddClicker(i)}
+                    onClick={() => this.onBuyClicker(i)}
                   >
                     Buy for {clicker.cost} Cookies ({clicker.numberOf})
                   </button>

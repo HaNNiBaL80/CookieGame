@@ -1,3 +1,17 @@
+Requirements
+    The cookie responds to click event, increments counter by 1	
+    The cookie show the number of existing cookies
+Clickers
+    clickers periodically auto increment the number of cookies.
+    Cursor, autoclicks the cookie every 10 seconds, cost starts at 15
+    Grandma, bakes 4 cookies every 1 second, cost starts at 100
+    Farm crops 8 cookies every one second, cost starts at 500
+    Clickers price increases 15% every purchase.
+
+Upgrades
+Double click, increases click production to 2, on click and autoclick.
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
