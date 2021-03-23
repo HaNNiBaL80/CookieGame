@@ -15,6 +15,7 @@
     Clickers price increases 15% every purchase.
 
 #Upgrades
+
 Double click, increases click production to 2, on click and autoclick.
 
 
