@@ -129,7 +129,7 @@ class CookieGame extends React.Component {
                 alt="logo"
               />
             </div>
-            <div className={"col-xs-12"}>+1</div>
+            <div className={"col-xs-12"}>+{this.state.clickAddsNumber}</div>
           </div>
           <div className={"col-xs-6"}>
             <div className={"col-xs-12"} className="upgrades-container">
