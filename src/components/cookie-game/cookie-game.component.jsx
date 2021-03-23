@@ -8,6 +8,7 @@ class CookieGame extends React.Component {
     this.state = {
       cookies: 0,
       clickAddsNumber: 1,
+      doubleClicksCounter: 0,
       clickers: [
         {
           id: 1,
@@ -17,6 +18,7 @@ class CookieGame extends React.Component {
           desc: "Autoclicks every 10 seconds",
           numberOf: 0, //instances
           lastEntry: new Date(), //last execution
+          addNumber: 0
         },
         {
           id: 2,
@@ -26,9 +28,19 @@ class CookieGame extends React.Component {
           desc: "Grandma bakes a cookie every second",
           numberOf: 0, //instances
           lastEntry: new Date(), //last execution
+          addNumber: 1
         },
-        
-      ],
+        {
+          id: 3,
+          name: "Farm",
+          frequency: 1, //seconds
+          cost: 500, //cookies
+          desc: "Farm crops 8 cookies every one second, cost starts at 500",
+          numberOf: 0, //instances
+          lastEntry: new Date(), //last execution
+          addNumber: 8
+        }
+      ]
     };
 
     this.clickCookie = this.clickCookie.bind(this);
@@ -46,8 +58,20 @@ class CookieGame extends React.Component {
     });
   };
 
+  onAddDoubleClicks = () => {
+    console.log(this.state.clickAddsNumber);
+    this.setState({
+      clickAddsNumber: this.state.clickAddsNumber+1,
+      doubleClicksCounter: 1
+    });
+  };
+
   isClickerDisabled = (cost) => {
     return this.state.cookies < cost;
+  };
+  
+  isDoubleClickerDisabled = () => {
+    return this.state.cookies < 10 || this.state.doubleClicksCounter > 0;
   };
 
   clickCookie() {
@@ -66,14 +90,18 @@ class CookieGame extends React.Component {
       console.log("seconds ", seconds, clicker.frequency);
       if (seconds >= clicker.frequency) {
         console.log("clicker.numberOf", clicker.numberOf);
-        newCookies = newCookies + this.state.clickAddsNumber * clicker.numberOf;
+        if(clicker.addNumber ===0){         
+          newCookies = newCookies + this.state.clickAddsNumber * clicker.numberOf;
+        }else{
+          newCookies = newCookies + clicker.addNumber * clicker.numberOf;
+        }
         clicker.lastEntry = refDate;
       }
     });
 
     this.setState({
       cookies: this.state.cookies + newCookies,
-      clickers: clickers,
+      clickers: clickers
     });
   }
 
@@ -106,6 +134,22 @@ class CookieGame extends React.Component {
           <div className={"col-xs-6"}>
             <div className={"col-xs-12"} className="upgrades-container">
               <h3>Upgrades</h3>
+
+              <div className={"upgrader"} >
+                  <p>
+                    <b>Double Click</b>
+                  </p>
+                  <span>Double click, increases click production to 2, on click and autoclick.</span>
+                  <p className={"upgrader-cost"}>Cost:10</p>
+                  <button
+                    className="btn btn-primary"
+                    disabled={this.isDoubleClickerDisabled()}
+                    onClick={() => this.onAddDoubleClicks()}
+                  >
+                    Buy for 10 Cookies ({this.state.doubleClicksCounter})
+                  </button>
+                </div>
+
             </div>
             <div className={"col-xs-12"} className="clickers-container">
               <h3>Clickers</h3>

@@ -7,7 +7,12 @@
   .upgrades-container{
     min-height: 50%;
   }
-  
+  .upgrader {
+    margin-top: 8px;
+    border-top: 3px solid rgb(78, 67, 67);
+    background-color: #eee;
+    text-align: left;
+  }
   .clickers-container{
     min-height: 50%;
   }
