@@ -1,14 +1,20 @@
-Requirements
+##Requirements
     The cookie responds to click event, increments counter by 1	
+    
     The cookie show the number of existing cookies
-Clickers
-    clickers periodically auto increment the number of cookies.
-    Cursor, autoclicks the cookie every 10 seconds, cost starts at 15
-    Grandma, bakes 4 cookies every 1 second, cost starts at 100
+    
+#Clickers
+    Clickers periodically auto increment the number of cookies.
+    
+    Cursor, autoclicks the cookie every 10 seconds, cost starts at 10
+    
+    Grandma, bakes 4 cookies every 1 second, cost starts at 20
+    
     Farm crops 8 cookies every one second, cost starts at 500
+    
     Clickers price increases 15% every purchase.
 
-Upgrades
+#Upgrades
 Double click, increases click production to 2, on click and autoclick.
 
 
